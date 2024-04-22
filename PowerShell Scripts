@@ -1,0 +1,8 @@
+# Connect to Azure AD with your credentials
+Connect-AzureAD
+
+# Get all users and filter for 'asst' or 'mgr' in the UserPrincipalName
+$users = Get-AzureADUser -All $true | Where-Object { $_.UserPrincipalName -like "*asst*" -or $_.UserPrincipalName -like "*mgr*" }
+
+# Display the results
+$users | Select-Object DisplayName, UserPrincipalName
